@@ -36,7 +36,7 @@ void pop()
    else
    {
       Node *temp = top;
-      cout << "Popped: " << temp->data << endl;
+      cout << "\nPopped: " << temp->data << endl;
 
       top = top->next;
 
@@ -61,13 +61,16 @@ int main()
    push(10);
    push(20);
    push(30);
+   push(40);
+   push(50);
 
-   cout << "Stack: ";
+   cout << "\nStack Using Push: ";
    display();
 
    pop();
+   pop();
 
-   cout << "After POP: ";
+   cout << "\nAfter POP: ";
    display();
 
    return 0;
