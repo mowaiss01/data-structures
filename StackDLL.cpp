@@ -11,7 +11,6 @@ struct Node
 
 Node *top = NULL;
 
-// PUSH: Insert a new node at the top
 void push(int value)
 {
    Node *newNode = new Node;
@@ -27,10 +26,8 @@ void push(int value)
 
    top = newNode;
 
-   cout << value << " pushed into stack." << endl;
 }
 
-// POP: Remove the top node
 void pop()
 {
    if (top == NULL)
@@ -53,7 +50,6 @@ void pop()
    delete temp;
 }
 
-// PEEK: Display the top value
 void peek()
 {
    if (top == NULL)
@@ -65,7 +61,6 @@ void peek()
    cout << "Top element: " << top->data << endl;
 }
 
-// DISPLAY: Print all nodes from top to bottom
 void display()
 {
    if (top == NULL)
@@ -87,7 +82,6 @@ void display()
    cout << endl;
 }
 
-// MAIN FUNCTION
 int main()
 {
    push(10);
