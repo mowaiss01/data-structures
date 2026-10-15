@@ -18,7 +18,6 @@ void push(int value)
    top = newNode;
 }
 
-// POP: Remove the top node
 void pop()
 {
    if (top == NULL)
@@ -46,7 +45,6 @@ void peek()
    cout << "Top element: " << top->data << endl;
 }
 
-// DISPLAY: Print all nodes
 void display()
 {
    if (top == NULL)
@@ -70,7 +68,6 @@ void display()
 
 int main()
 {
-   // Manually create four nodes
    push(10);
    push(20);
    push(30);

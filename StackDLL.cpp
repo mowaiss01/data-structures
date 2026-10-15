@@ -47,6 +47,10 @@ void pop()
       top->prev = NULL;
    }
 
+
+
+
+   
    delete temp;
 }
 
