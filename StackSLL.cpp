@@ -27,7 +27,7 @@ void pop()
    }
 
    Node *temp = top;
-   cout << "Popped element: " << temp->data << endl;
+   // cout << "Popped element: " << temp->data << endl;
 
    top = top->next;
    delete temp;

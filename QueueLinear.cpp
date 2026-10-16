@@ -10,12 +10,14 @@ int rear = -1;
 
 void enqueue(int value)
 {
+   //condition for empty queue
    if (rear == SIZE - 1)
    {
       cout << "Overflow: Queue is full!" << endl;
       return;
    }
 
+   //first element
    if (front == -1)
    {
       front = 0;
@@ -34,7 +36,6 @@ void dequeue()
       cout << "Underflow: Queue is empty!" << endl;
       return;
    }
-
    cout << "Removed element: " << queue[front] << endl;
 
    if (front == rear)

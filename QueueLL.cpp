@@ -11,7 +11,6 @@ struct Node
 Node *front = NULL;
 Node *rear = NULL;
 
-// ENQUEUE: Insert at rear
 void enqueue(int value)
 {
    Node *newNode = new Node;
@@ -55,7 +54,6 @@ void dequeue()
    delete temp;
 }
 
-// PEEK: Display front element
 void peek()
 {
    if (front == NULL)
@@ -67,7 +65,6 @@ void peek()
    cout << "Front element: " << front->data << endl;
 }
 
-// DISPLAY: Print all nodes
 void display()
 {
    if (front == NULL)
@@ -89,7 +86,6 @@ void display()
    cout << endl;
 }
 
-// MAIN FUNCTION
 int main()
 {
    enqueue(10);
