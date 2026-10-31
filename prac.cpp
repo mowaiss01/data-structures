@@ -6,38 +6,45 @@ struct Node
    int data;
    Node *left;
    Node *right;
-
-   Node(int val)
-   {
-      data = val;
-      left = right = NULL;
-   }
 };
 
-bool isValidBST(Node *root, int min, int max)
+Node *insert(Node *root, int value)
 {
    if (root == NULL)
-      return true;
+   {
+      Node *newNode = new Node;
+      newNode->data = value;
+      newNode->left = NULL;
+      newNode->right = NULL;
+      return newNode;
+   }
 
-   if (root->data <= min || root->data >= max)
-      return false;
+   if (value < root->data)
+   {
+      root->left = insert(root->left, value);
+   }
+   else if (value < root->data)
+   {
+      root->right = insert(root->right, value);
+   }
 
-   return isValidBST(root->left, min, root->data) &&
-          isValidBST(root->right, root->data, max);
+   return root;
 }
 
-int main()
+bool isEmpty(Node *root)
 {
-   Node *root = new Node(40);
-   root->left = new Node(20);
-   root->right = new Node(60);
-   root->left->left = new Node(10);
-   root->left->right = new Node(30);
+   return root == NULL;
+}
 
-   if (isValidBST(root, -1000, 1000))
-      cout << "Valid BST";
-   else
-      cout << "Invalid BST";
+Node *search(Node *root, int key)
+{
+   if (root == NULL || root->data == key)
+   {
+      return root;
+   }
 
-   return 0;
+   if (key < root->data)
+      return search(root->left, key);
+
+   return search(root->right, key);
 }
