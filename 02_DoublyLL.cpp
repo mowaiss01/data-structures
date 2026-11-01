@@ -8,14 +8,20 @@ struct Node
    Node *next;
 };
 
+int isEmpty(Node *head)
+{
+   return head == NULL;
+}
+
 int counter(Node *head)
 {
    int count = 0;
 
+   Node *temp = head;
    while (head != nullptr)
    {
       count++;
-      head = head->next;
+      temp = temp->next;
    }
 
    return count;
@@ -57,13 +63,15 @@ Node *insertAtBeginning(Node *head, int value)
 {
    Node *newNode = new Node;
    newNode->data = value;
-   newNode->prev = nullptr;
    newNode->next = head;
+   newNode->prev = nullptr;
 
    if (head != nullptr)
       head->prev = newNode;
 
-   return newNode;
+   head = newNode;
+
+   return head;
 }
 
 // INSERT AT END
@@ -71,53 +79,54 @@ Node *insertAtEnd(Node *head, int value)
 {
    Node *newNode = new Node;
    newNode->data = value;
-   newNode->prev = nullptr;
    newNode->next = nullptr;
 
    if (head == nullptr)
+   {
+      newNode->prev = nullptr;
       return newNode;
+   }
 
-   Node *current = head;
+   Node *temp = head;
 
-   while (current->next != nullptr)
-      current = current->next;
+   while (temp->next != nullptr)
+      temp = temp->next;
 
-   current->next = newNode;
-   newNode->prev = current;
+   temp->next = newNode;
+   newNode->prev = temp;
 
    return head;
 }
 
 // INSERT AT ANY POSITION
-Node *insertAtPosition(Node *head, int value, int pos)
+Node *insertAtPosition(Node *head, int value, int position)
 {
-   int n = counter(head);
+   if (position == 1)
+      return insertAtBeginning(head, value);
 
-   if (pos < 1 || pos > n + 1)
+   Node *temp = head;
+
+   for (int i = 1; i < position - 1 && temp != NULL; i++)
    {
-      cout << "Invalid position\n";
+      temp = temp->next;
+   }
+
+   if (temp == NULL)
+   {
+      cout << "Invalid Position\n";
       return head;
    }
 
-   if (pos == 1)
-      return insertAtBeginning(head, value);
-
-   if (pos == n + 1)
-      return insertAtEnd(head, value);
-
-   Node *current = head;
-
-   for (int i = 1; i < pos - 1; i++)
-      current = current->next;
-
    Node *newNode = new Node;
+
    newNode->data = value;
+   newNode->prev = temp;
+   newNode->next = temp->next;
 
-   newNode->prev = current;
-   newNode->next = current->next;
+   if (temp->next != NULL)
+      temp->next->prev = newNode;
 
-   current->next->prev = newNode;
-   current->next = newNode;
+   temp->next = newNode;
 
    return head;
 }
@@ -170,33 +179,55 @@ Node *deleteAtEnd(Node *head)
 }
 
 // DELETE AT ANY POSITION
-Node *deleteAtPosition(Node *head, int pos)
+Node *deleteAtPosition(Node *head, int value)
 {
-   int n = counter(head);
+   if (head == NULL)
+      return NULL;
 
-   if (pos < 1 || pos > n)
+   Node *temp = head;
+
+   while (temp != NULL && temp->data != value)
    {
-      cout << "Invalid position\n";
+      temp = temp->next;
+   }
+
+   if (temp == NULL)
+   {
+      cout << "Value Not Found\n";
       return head;
    }
 
-   if (pos == 1)
+   if (temp == head)
       return deleteAtBeginning(head);
 
-   if (pos == n)
-      return deleteAtEnd(head);
+   if (temp->next != NULL)
+      temp->next->prev = temp->prev;
 
-   Node *current = head;
+   temp->prev->next = temp->next;
 
-   for (int i = 1; i < pos; i++)
-      current = current->next;
-
-   current->prev->next = current->next;
-   current->next->prev = current->prev;
-
-   delete current;
+   delete temp;
 
    return head;
+}
+
+// Search
+
+int search(Node *head, int key)
+{
+   int position = 1;
+
+   Node *temp = head;
+
+   while (temp != NULL)
+   {
+      if (temp->data == key)
+         return position;
+
+      temp = temp->next;
+      position++;
+   }
+
+   return -1;
 }
 
 // UPDATE AT BEGINNING

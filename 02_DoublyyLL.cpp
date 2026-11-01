@@ -29,7 +29,6 @@ Node *insertBeginning(Node *head, int value)
 Node *insertEnd(Node *head, int value)
 {
    Node *newNode = new Node;
-
    newNode->data = value;
    newNode->next = NULL;
 

@@ -22,12 +22,12 @@ int counter(Node *head)
 
 void display(Node *head)
 {
-   Node *current = head;
+   Node *temp = head;
 
-   while (current != nullptr)
+   while (temp != nullptr)
    {
-      cout << current->data << " ";
-      current = current->next;
+      cout << temp->data << " ";
+      temp = temp->next;
    }
 
    cout << endl;
@@ -120,6 +120,7 @@ Node *deleteAtEnd(Node *head)
       return head;
    }
 
+   // If there's only one node, delete it and return nullptr
    if (head->next == nullptr)
    {
       delete head;
@@ -128,6 +129,7 @@ Node *deleteAtEnd(Node *head)
 
    Node *current = head;
 
+   // Traverse to the second last node and delete the last node
    while (current->next->next != nullptr)
       current = current->next;
 
