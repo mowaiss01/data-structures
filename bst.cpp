@@ -189,21 +189,6 @@ Node *deleteNode(Node *root, int key)
    return root;
 }
 
-// 13. COPY TREE
-Node *copyTree(Node *root)
-{
-   if (root == NULL)
-      return NULL;
-
-   Node *newNode = new Node;
-   newNode->data = root->data;
-
-   newNode->left = copyTree(root->left);
-   newNode->right = copyTree(root->right);
-
-   return newNode;
-}
-
 int main()
 {
    Node *root = NULL;
@@ -242,9 +227,6 @@ int main()
 
    if (temp != NULL)
       cout << "Parent of 40: " << temp->data << endl;
-
-   // SIBLING
-   temp = findSibling(root, 20);
 
    if (temp != NULL)
       cout << "Sibling of 20: " << temp->data << endl;
@@ -290,12 +272,6 @@ int main()
 
    cout << "\nAfter deleting 30: ";
    inorder(root);
-
-   // COPY TREE
-   Node *copiedRoot = copyTree(root);
-
-   cout << "\nCopied tree: ";
-   inorder(copiedRoot);
 
    return 0;
 }
