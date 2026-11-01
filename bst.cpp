@@ -84,21 +84,7 @@ Node *findParent(Node *root, int key)
    return findParent(root->right, key);
 }
 
-// 7. FIND SIBLING
-Node *findSibling(Node *root, int key)
-{
-   Node *parent = findParent(root, key);
-
-   if (parent == NULL)
-      return NULL;
-
-   if (parent->left != NULL && parent->left->data == key)
-      return parent->right;
-
-   return parent->left;
-}
-
-// 8. PREORDER
+// 7. PREORDER
 void preorder(Node *root)
 {
    if (root == NULL)
@@ -109,7 +95,7 @@ void preorder(Node *root)
    preorder(root->right);
 }
 
-// 9. INORDER
+// 8. INORDER
 void inorder(Node *root)
 {
    if (root == NULL)
@@ -120,7 +106,7 @@ void inorder(Node *root)
    inorder(root->right);
 }
 
-// 10. POSTORDER
+// 9. POSTORDER
 void postorder(Node *root)
 {
    if (root == NULL)
@@ -131,7 +117,7 @@ void postorder(Node *root)
    cout << root->data << " ";
 }
 
-// 11. FIND MINIMUM
+// 10. FIND MINIMUM
 Node *findMin(Node *root)
 {
    if (root == NULL)
@@ -143,7 +129,7 @@ Node *findMin(Node *root)
    return root;
 }
 
-// 12. FIND MAXIMUM
+// 11. FIND MAXIMUM
 Node *findMax(Node *root)
 {
    if (root == NULL)
@@ -155,7 +141,7 @@ Node *findMax(Node *root)
    return root;
 }
 
-// 13. DELETION
+// 12. DELETION
 Node *deleteNode(Node *root, int key)
 {
    if (root == NULL)
@@ -203,7 +189,7 @@ Node *deleteNode(Node *root, int key)
    return root;
 }
 
-// 14. COPY TREE
+// 13. COPY TREE
 Node *copyTree(Node *root)
 {
    if (root == NULL)
