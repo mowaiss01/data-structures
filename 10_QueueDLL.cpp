@@ -43,7 +43,7 @@ void dequeue()
 
    Node *temp = front;
 
-   cout << "Removed element: " << temp->data << endl;
+   // cout << "Removed element: " << temp->data << endl;
 
    front = front->next;
 

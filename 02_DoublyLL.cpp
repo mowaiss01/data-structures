@@ -166,14 +166,14 @@ Node *deleteAtEnd(Node *head)
       return nullptr;
    }
 
-   Node *current = head;
+   Node *temp = head;
 
-   while (current->next != nullptr)
-      current = current->next;
+   while (temp->next != nullptr)
+      temp = temp->next;
 
-   current->prev->next = nullptr;
+   temp->prev->next = nullptr;
 
-   delete current;
+   delete temp;
 
    return head;
 }

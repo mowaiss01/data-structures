@@ -53,12 +53,12 @@ Node *insertAtEnd(Node *head, int value)
    if (head == nullptr)
       return newNode;
 
-   Node *current = head;
+   Node *temp = head;
 
-   while (current->next != nullptr)
-      current = current->next;
+   while (temp->next != nullptr)
+      temp = temp->next;
 
-   current->next = newNode;
+   temp->next = newNode;
 
    return head;
 }
@@ -127,14 +127,14 @@ Node *deleteAtEnd(Node *head)
       return nullptr;
    }
 
-   Node *current = head;
+   Node *temp = head;
 
    // Traverse to the second last node and delete the last node
-   while (current->next->next != nullptr)
-      current = current->next;
+   while (temp->next->next != nullptr)
+      temp = temp->next;
 
-   delete current->next;
-   current->next = nullptr;
+   delete temp->next;
+   temp->next = nullptr;
 
    return head;
 }
@@ -156,13 +156,13 @@ Node *deleteAtPosition(Node *head, int pos)
    if (pos == n)
       return deleteAtEnd(head);
 
-   Node *current = head;
+   Node *temp = head;
 
    for (int i = 1; i < pos - 1; i++)
-      current = current->next;
+      temp = temp->next;
 
-   Node *temp = current->next;
-   current->next = temp->next;
+   Node *temp = temp->next;
+   temp->next = temp->next;
 
    delete temp;
 

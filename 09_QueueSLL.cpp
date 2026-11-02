@@ -28,7 +28,7 @@ void enqueue(int value)
       rear = newNode;
    }
 
-   cout << value << " inserted into queue." << endl;
+   // cout << value << " inserted into queue." << endl;
 }
 
 // DEQUEUE: Remove from front
@@ -42,7 +42,7 @@ void dequeue()
 
    Node *temp = front;
 
-   cout << "Removed element: " << temp->data << endl;
+   // cout << "Removed element: " << temp->data << endl;
 
    front = front->next;
 

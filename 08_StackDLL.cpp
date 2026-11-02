@@ -1,4 +1,3 @@
-
 #include <iostream>
 using namespace std;
 
@@ -25,7 +24,6 @@ void push(int value)
    }
 
    top = newNode;
-
 }
 
 void pop()
@@ -46,7 +44,7 @@ void pop()
    {
       top->prev = NULL;
    }
-   
+
    delete temp;
 }
 
